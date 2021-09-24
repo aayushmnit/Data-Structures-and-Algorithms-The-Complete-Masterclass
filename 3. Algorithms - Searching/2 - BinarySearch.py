@@ -1,14 +1,14 @@
 def binarySearch(my_array, target):
     left = 0
     right = len(my_array) - 1
-
+    
     while left <= right:
         middle = (left + right) // 2
         middle_element = my_array[middle]
 
-        if target == middle_element:
+        if middle_element == target:
             return middle
-        elif target < middle_element:
+        elif middle_element > target:
             right = middle - 1
         else:
             left = middle + 1

@@ -6,4 +6,4 @@ def linearSearch(my_array, target):
     
     return -1
 
-linearSearch([5, 3, 1, 9, 2], 9)
+print(linearSearch([5, 3, 1, 9, 2], 9))

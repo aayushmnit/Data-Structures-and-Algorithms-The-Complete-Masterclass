@@ -1,15 +1,13 @@
 def selectionSort(arr):
-    
-    for i in range(len(arr)):
-        min_x = i
+    for i in range(len(arr)-1):
+        min_index = i
+        for index in range(min_index+1, len(arr)):
+            if arr[min_index] > arr[index]:
+                min_index = index
+            
+        arr[i], arr[min_index] = arr[min_index], arr[i]
 
-        for item in range(i+1, len(arr)):
-            if arr[item] < arr[min_x]:
-                min_x = item
-
-        arr[i], arr[min_x] = arr[min_x], arr[i]
+    return arr
 
 arr = [20, 12, 10, 15, 2]
-selectionSort(arr)
-
-print(arr)
+print(f'final:{selectionSort(arr)}')
