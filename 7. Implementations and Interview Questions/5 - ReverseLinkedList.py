@@ -5,15 +5,15 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def reverseList(self, head):        
+    def reverseList(self, head : ListNode) -> ListNode:        
         pre = None
         cur = head
         suc = None
-        
-        while cur:
+       
+        while cur is not None:
             suc = cur.next
             cur.next = pre
             pre = cur
             cur = suc
-            
+
         return pre

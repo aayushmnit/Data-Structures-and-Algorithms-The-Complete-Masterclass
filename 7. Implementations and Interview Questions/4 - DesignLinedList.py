@@ -5,29 +5,26 @@ class ListNode:
         self.next = None
 
 class MyLinkedList:
-
     def __init__(self):
         self.head = None
         self.tail = None
         self.size = 0
-        
-
-    def get(self, index):
+    
+    def get(self, index: int) -> int:
         if index < 0 or index >= self.size:
             return -1
         
         cur = self.head
-        
+
         while index != 0:
             cur = cur.next
-            index = index - 1
-        
-        return cur.val
-        
+            index -= 1 
 
-    def addAtHead(self, val):
+        return cur.val
+
+    def addAtHead(self, val: int) -> None:
         new_node = ListNode(val)
-        
+
         if self.head is None:
             self.head = new_node
             self.tail = new_node
@@ -38,9 +35,9 @@ class MyLinkedList:
         
         self.size += 1
 
-    def addAtTail(self, val):
+    def addAtTail(self, val: int) -> None:
         new_node = ListNode(val)
-        
+
         if self.head is None:
             self.head = new_node
             self.tail = new_node
@@ -50,12 +47,11 @@ class MyLinkedList:
             self.tail = new_node
         
         self.size += 1
-        
-
-    def addAtIndex(self, index, val):
-        if index < 0 or index > self.size:
+    
+    def addAtIndex(self, val, index):
+        if index < 0 or index >= self.size:
             return
-        elif index == 0:
+        elif index == 0 :
             self.addAtHead(val)
         elif index == self.size:
             self.addAtTail(val)
@@ -66,50 +62,48 @@ class MyLinkedList:
                 index -= 1
             
             new_node = ListNode(val)
-            
+
             new_node.next = cur.next
             cur.next.prev = new_node
             cur.next = new_node
             new_node.prev = cur
-            
-            self.size += 1 
-            
+
+            self.size += 1
 
     def deleteAtIndex(self, index):
-        if index < 0 or index >= self.size:
+        if index < 0 or index > self.size:
             return
         elif index == 0:
             cur = self.head.next
             if cur:
                 cur.prev = None
             
-            self.head = self.head.next
+            self.head = cur
             self.size -= 1
-            
+
             if self.size == 0:
-                self.tail = None
+                self.tail = None    
         elif index == self.size-1:
             cur = self.tail.prev
             if cur:
                 cur.next = None
-            self.tail = self.tail.prev
             
+            self.tail = cur 
             self.size -= 1
-            
+
             if self.size == 0:
-                self.head = None            
+                self.head = None
         else:
             cur = self.head
             while index-1 != 0:
                 cur = cur.next
                 index -= 1
-                
+            
             cur.next = cur.next.next
             cur.next.prev = cur
             
-            self.size -= 1
-
-
+            self.size -= 1 
+            
 ## Example Execution ##
 obj = MyLinkedList()
 obj.addAtHead(10)
